@@ -1,0 +1,17 @@
+﻿version: '3.7'
+services:
+    
+    RabbitMQContainer:
+        image: rabbitmq:3-management-alpine
+        ports:
+            - 5672:5672
+            - 15672:15672
+        volumes:
+            - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+            - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+        networks:
+            - rabbit
+
+networks:
+    rabbit:
+        driver: bridge
