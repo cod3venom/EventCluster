@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EventCluster.Interface
 {
-    internal interface IConsumer : IProvider
+    internal interface IConsumer
     {
         void On(string topic, Action<Event> callBack);
     }

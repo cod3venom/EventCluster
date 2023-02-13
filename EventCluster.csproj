@@ -71,7 +71,6 @@
   <ItemGroup>
     <Compile Include="Interface\IConsumerProvider.cs" />
     <Compile Include="Interface\IProducerProvider.cs" />
-    <Compile Include="Interface\IProvider.cs" />
     <Compile Include="EventBus\EventBus.cs" />
     <Compile Include="EventBus\Type\Event.cs" />
     <Compile Include="EventConsumer.cs" />
@@ -84,7 +83,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Docker-Compose.yaml" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
