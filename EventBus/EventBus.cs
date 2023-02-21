@@ -29,6 +29,10 @@ namespace EventCluster.EventBus
         }
         public void On(string topic, Action<Event> callBack)
         {
+            if (this._eventStorage.ContainsKey(topic)) {
+                return;
+            }
+
             this._eventStorage.Add(topic, callBack);
         }
 
