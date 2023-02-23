@@ -22,8 +22,11 @@ namespace EventCluster.Module.Controller
             MethodInfo[] methods = this.GetMEthods();
             foreach(MethodInfo method in methods)
             {
-                EventControllerAttr attr = this.GetAttributes(method);
+                Endpoint attr = this.GetAttributes(method);
 
+                if (attr.Name == "") {
+                    continue;
+                }
                 this._consumer.On(attr.Name, (Event @event) => {
                     method.Invoke(this._controller,  new object[] { @event} );
                 });
@@ -36,11 +39,11 @@ namespace EventCluster.Module.Controller
             return methods;
         }
 
-        private EventControllerAttr GetAttributes(MethodInfo method)
+        private Endpoint GetAttributes(MethodInfo method)
         {
-            var attributes = method.GetCustomAttributes(true).OfType<EventControllerAttr>().FirstOrDefault();
+            var attributes = method.GetCustomAttributes(true).OfType<Endpoint>().FirstOrDefault();
             if (attributes == null) {
-                return new EventControllerAttr("");
+                return new Endpoint("");
             }
             return attributes;
         }
